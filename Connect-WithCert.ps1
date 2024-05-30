@@ -13,9 +13,9 @@ $password = ConvertTo-SecureString -String "GvFh97Dvg9oJ57KBNbkJ" -Force -AsPlai
 # Step 2: (Manual Step) Register app and upload certificate.cer in Azure AD
 
 # Step 3: Authenticate using the certificate
-$tenantId = "ea3a1c7e-d8bc-4071-8fe9-5af9889df8d2"
-$ApplicationId = "d61d11dc-4248-41b0-a96e-030e9632fdc2"
-$thumbprint = $cert.Thumbprint
+$TenantId = "ea3a1c7e-d8bc-4071-8fe9-5af9889df8d2"
+$ApplicationId = "4e43ae4d-ddf3-4140-a844-01f063847f81"
+$Thumbprint = "E918662E81C623B9AABBB5C5AEF85B30E8DB65B9"
 #$certCredential = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2
 #$certCredential.Import("Cert:\CurrentUser\My\$thumbprint")
 
@@ -26,4 +26,4 @@ if ($certStore -eq $null) {
     exit
 }
 
-Connect-AzAccount -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -Tenant $TenantId -ServicePrincipal
+Connect-AzAccount -CertificateThumbprint $certStore.Thumbprint -ApplicationId $ApplicationId -Tenant $TenantId 
